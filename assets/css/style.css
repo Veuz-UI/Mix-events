@@ -231,6 +231,10 @@ h1 {
 		width: 150px;
 	}
 }
+body.loading {
+    overflow: hidden;
+    height: 100vh;
+}
 
 /* ---------------------------------------
             END loader
@@ -631,7 +635,7 @@ h1 {
 
 /* start portfolio here */
 .portfolio {
-	padding: 100px 0px 0;
+	padding: 100px 0px;
 	background-image: url(../img/portfolio.png);
 	background-size: cover;
 	background-repeat: no-repeat;

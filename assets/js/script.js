@@ -180,33 +180,6 @@ $(document).ready(function () {
 
 
 
-// portfolio
-
-// portfolio
-// document.querySelectorAll('.portfolio-items').forEach(item => {
-//   const content = item.querySelector('.portfolio-items-cont');
-
-//   item.addEventListener('mouseenter', () => {
-//     gsap.killTweensOf(content);
-//     gsap.to(content, {
-//       y: -30,
-//       opacity: 1,
-//       duration: 0.7,
-//       ease: "power3.out"
-//     });
-//   });
-
-//   item.addEventListener('mouseleave', () => {
-//     gsap.killTweensOf(content);
-
-//     gsap.to(content, {
-//       y: 0,
-//       opacity: 0,
-//       duration: 0.4,
-//       ease: "power3.in"
-//     });
-//   });
-// });
 
 // letstalk
 
@@ -265,6 +238,7 @@ $(window).mousemove(function (e) {
 //END cursor pointer
 
 // loader
+document.body.style.overflow = 'hidden'; // Prevent scrolling during loader
 window.scrollTo(0, 0); // Ensure loader is visible at top
 const presvg = document.getElementById('presvg');
 const tl = gsap.timeline({
@@ -273,34 +247,12 @@ const tl = gsap.timeline({
     duration: 1.5,
   },
   onComplete: () => {
+    setTimeout(() => {
+      document.body.style.overflow = 'visible';
+    }, 500);
     document.body.style.overflow = 'visible';
     // Start text animation after loader
-    gsap.from("#text", {
-      duration: 2,
-      opacity: 0,
-      y: 50,
-      ease: "power2.out",
-      onStart: function () {
-        const text = document.querySelector("#text");
-        const finalText = "Out of this World!\n"; // Added \n for line break
-        let currentText = "";
-        let index = 0;
-
-        const scrambleInterval = setInterval(() => {
-          currentText = finalText.substring(0, index);
-          while (currentText.length < finalText.length - 1) { // -1 to account for \n
-            currentText += String.fromCharCode(Math.random() * (122 - 97) + 97);
-          }
-          text.innerHTML = currentText.replace('\n', '<br>'); // Use innerHTML and replace \n with <br>
-
-          if (index >= finalText.length) {
-            clearInterval(scrambleInterval);
-            text.innerHTML = finalText.replace('\n', '<br>');
-          }
-          index++;
-        }, 100);
-      }
-    });
+    
   }
 });
 
@@ -405,18 +357,30 @@ gsap.from(".service .section-title", {
 
 
 // portfolio
-// gsap.from(".portfolio-in .portfolio-items", {
-//   duration: 1,
-//   y: 50,
-//   opacity: 0,
-//   stagger: 0.5,
-//   ease: "power2.out",
-//   scrollTrigger: {
-//     trigger: ".portfolio-in .portfolio-items",
-//     start: "top 80%",
-//     toggleActions: "play none none reverse",
-//   }
-// });
+document.querySelectorAll('.portfolio-items').forEach(item => {
+  const content = item.querySelector('.portfolio-items-cont');
+
+  item.addEventListener('mouseenter', () => {
+    gsap.killTweensOf(content);
+    gsap.to(content, {
+      y: -30,
+      opacity: 1,
+      duration: 0.7,
+      ease: "power3.out"
+    });
+  });
+
+  item.addEventListener('mouseleave', () => {
+    gsap.killTweensOf(content);
+    
+    gsap.to(content, {
+      y: 0,
+      opacity: 0,
+      duration: 0.4,
+      ease: "power3.in"
+    });
+  });
+});
 
 
 
@@ -511,29 +475,37 @@ gsap.to('.floating-logos-x', {
     duration: 3
 });
 
+// event 
+gsap.from(".event-head-title", {
+  duration: 1,
+  x: -100,
+  opacity: 0,
+  stagger: 0.3,
+  scrollTrigger: {
+      trigger: ".event-head-title",
+      start: "top 90%",
+      end: "bottom 50%",
+      scrub: true,
+      markers: false,
+      toggleActions: "play reverse play reverse",
+  }
+});
+gsap.from(".what-we-do-section .mix-btn-out", {
+  duration: 1,
+  x: 100,
+  opacity: 0,
+  stagger: 0.3,
+  scrollTrigger: {
+      trigger: ".what-we-do-section .mix-btn-out",
+      start: "top 90%",
+      end: "bottom 50%",
+      scrub: true,
+      markers: false,
+      toggleActions: "play reverse play reverse",
+  }
+});
 
 
 
 
 
-
-
-
-// footer
-
-
-// footer
-// gsap.from(".footer", {
-//   duration: 1,
-//   y: 300, 
-//   opacity: 0,
-//   scrollTrigger: {
-//     trigger: ".footer",
-//     start: "top bottom", 
-//     end: "top center",  
-//     scrub: true,
-//     markers: false,
-//     toggleActions: "play reverse play reverse",
-//     onEnter: () => startCounting(),
-//   }
-// });
