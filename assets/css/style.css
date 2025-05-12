@@ -386,7 +386,7 @@ body.loading {
 	position: relative;
 	/* height: 80vh;	 */
 	padding: 250px 0px;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 
@@ -481,22 +481,28 @@ body.loading {
 
 
 /* video section */
+.zr-hu-video-out {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  margin-bottom: 120px;
+}
+
 .zr-hu-video {
-	width: 100%;
-	overflow: hidden;
-	display: flex;
-	height: 600px;
-	justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: center;
 }
 
 .zr-hu-video video {
-	width: 0%;
-	transform: translateX(0%);
-	height: auto;
-	object-fit: cover;
-	display: block;
+  width: 40%; /* Initial width */
+  transition: width 0.3s ease;
+  /* position: relative;
+  z-index: 9; */
 }
-
 
 
 /* video section */
@@ -506,17 +512,19 @@ body.loading {
 
 .what-we-do-section {
 	position: relative;
+	min-height: 100vh;
+	overflow: hidden;
 }
 
 
 .what-we-do-inner{
-	padding: 150px 0px;
+	padding: 50px 0px;
 	background-image: url(../img/what-we-do-1.png);
 	background-repeat: no-repeat;
 	width: 100%;
 	background-size: cover;
 	background-position: center;
-
+	position: relative;
 }
 
 .what-we-do-video{
@@ -539,9 +547,20 @@ body.loading {
 	gap: 30px;
 	align-items: self-end;
 	position: relative;
+	/* padding-top: 30px;
+	padding-bottom: 100px; */
+	overflow: hidden;
+	/* min-height: 100vh; */
+	
 }
 
-.event-column.left {
+
+
+
+
+
+
+/* .event-column.left {
 	transform: translate(-50px, 100px);
 }
 
@@ -551,7 +570,7 @@ body.loading {
 
 .event-column.right {
 	transform: translate(50px, 100px);
-}
+} */
 
 .event-column {
 	text-align: center;
@@ -640,6 +659,7 @@ body.loading {
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
+	min-height: 100vh;
 }
 
 .portfolio-head {
@@ -647,6 +667,7 @@ body.loading {
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px 0 30px;
+	position: relative;
 }
 
 .right-portfolio-head button {
@@ -1149,41 +1170,74 @@ body.loading {
 	position: absolute;
 	width: 150px;
 	height: 150px;
-	background-image: url('../img/banner-shooting-star.png');
+	background-image: url('../img/banner-shooting-star.gif');
 	background-size: contain;
 	background-repeat: no-repeat;
 	opacity: 0.5;
 	z-index: 2;
-	right: -120px;
+	right: 0px;
 	left: auto;
 	/* Remove left positioning if present */
 	transform: translateX(0);
 	/* Start from right side */
 }
 
+.floating-element11 {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	background-image: url('../img/banner-shooting-star.gif');
+	background-size: contain;
+	background-repeat: no-repeat;
+	opacity: 0.5;
+	z-index: 2;
+	/* right: -120px; */
+	left: 55%;
+	/* Remove left positioning if present */
+	transform: translateX(0);
+	/* Start from right side */
+}
 
-.service .floating-element-2 {
+
+/* .what-we-do-section .floating-element-2 {
     position: absolute;
     width: 150px;
     height: 150px;
-  	background-image: url('../img/banner-shooting-star.png');
+  	background-image: url('../img/banner-shooting-star.gif');
 	background-size: contain;
 	background-repeat: no-repeat;
     z-index: 2;
 	transform: rotate(240deg);
     top: 0;
-    left: -130px;
+    left: -150px;
+	opacity: .5;
+} */
+.what-we-do-section .floating-element-2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+  	background-image: url('../img/banner-shooting-star.gif');
+	background-size: contain;
+	background-repeat: no-repeat;
+    z-index: 2;
+	transform: rotate(240deg);
+    top: -150px;
+    left: 0;
+	opacity: .5;
 }
-
 
 .floating-logo{
     position: absolute;
     left: 50%;
-	bottom: 20%;
+	bottom: 0;
     transform: translate(-50%, -50%);
 	display: flex;
-	gap: 5px;
+	gap: 0px;
 	align-items: center;
+	z-index: 3;
+	width: 20%;
+	justify-content: center;
+	height: 20%;
 }
 
 
@@ -1199,7 +1253,7 @@ body.loading {
 }
 
 .floating-logo .floating-logos-i{
-	width: 50px;  /* adjust based on your logo size */
+	width: 15px;  /* adjust based on your logo size */
 	height: 50px; /* adjust based on your logo size */
 	background-image: url('../img/mix-i.png'); /* add your logo image */
 	background-size: contain;
@@ -1210,7 +1264,7 @@ body.loading {
 }
 
 .floating-logo .floating-logos-x{
-	width: 50px;  /* adjust based on your logo size */
+	width: 32px;  /* adjust based on your logo size */
 	height: 50px; /* adjust based on your logo size */
 	background-image: url('../img/mix-x.png'); /* add your logo image */
 	background-size: contain;

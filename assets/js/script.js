@@ -73,43 +73,24 @@ images.forEach((img, index) => {
 });
 
 
-
-
-// services 
-// gsap.registerPlugin(ScrollTrigger);
-
-let cards = gsap.utils.toArray(".card");
-let tll = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".card-wrapper",
-    pin: ".page-wrapper",
-    start: "top 30%",
-    scrub: 2, // Increased scrub value for smoother scrolling
-    markers: false,
-    end: () => "+=" + cards.length * cards[0].offsetHeight
-  }
-});
-
-tll.add(() => {
-  console.log("card", 1, "in place")
-}, 0.001);
-
-cards.slice(1).forEach((card, i) => {
-  tll.fromTo(card, {
-    yPercent: 0,
-    opacity: 0, // Start fully transparent
-    scale: 0.95 // Slightly smaller scale
-  }, {
-    yPercent: -100,
-    opacity: 1, // Fade to fully visible
-    scale: 1, // Scale to normal size
-    duration: 1, // Longer duration for smoother transition
-    ease: "power2.inOut" // Smooth easing function
-  });
-  tll.add(() => {
-    console.log("card", (i + 2), "in place");
+// letstalk
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".letstalk .letstalk-content", {
+    duration: 1,
+    x: -300,
+    opacity: 0,
+    stagger: 0.3,
+    scrollTrigger: {
+        trigger: ".letstalk .letstalk-content",
+        start: "top 20%",
+        end: "bottom 0%",
+        scrub: true,
+        markers: false,
+        toggleActions: "play none none reverse",
+    },
   })
-})
+});
 
 
 // astraunet
@@ -180,26 +161,6 @@ $(document).ready(function () {
 
 
 
-
-// letstalk
-
-
-gsap.from(".letstalk .letstalk-content", {
-  duration: 1,
-  x: -300,
-  opacity: 0,
-  stagger: 0.3,
-  scrollTrigger: {
-      trigger: ".letstalk .letstalk-content",
-      start: "top 80%",
-      end: "top 20%",
-      scrub: true,
-      markers: false,
-      toggleActions: "play none none reverse",
-  },
-});
-
-
 // discover
 
 gsap.to(".discover-border", {
@@ -213,16 +174,31 @@ gsap.to(".discover-border", {
 
 
 // video container
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-gsap.to(".zr-hu-video video", {
-  width: "100%",
-  scrollTrigger: {
-    trigger: ".zr-hu-video",
-    start: "top bottom",
-    end: "top top",
-    scrub: true,
-  }
+// gsap.to(".zr-hu-video video", {
+//   width: "100%",
+//   scrollTrigger: {
+//     trigger: ".zr-hu-video",
+//     start: "top bottom",
+//     end: "top top",
+//     scrub: true,
+//   }
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".zr-hu-video video", {
+    width: "100%",
+    scrollTrigger: {
+      trigger: ".zr-hu-video",
+      start: "top bottom", // video enters viewport
+      end: "top top",      // video reaches top
+      scrub: true,
+      markers: false // Optional for debugging
+    }
+  });
 });
 
 
@@ -386,15 +362,7 @@ document.querySelectorAll('.portfolio-items').forEach(item => {
 
 
 
-
-
-
-
-
-
-
-
-
+// floating-element
 
 gsap.to('.floating-element', {
   scrollTrigger: {
@@ -411,69 +379,20 @@ gsap.to('.floating-element', {
 });
 
 
-gsap.to('.service .floating-element-2', {
-    x: '100vw',
-    y: '',
-    duration: 3,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".service",
-        start: "top center",
-        end: "bottom center",
-        scrub: 1,
-        markers: false,
-        toggleActions: "play none none reverse"
-    }
+gsap.to('.floating-element11', {
+  scrollTrigger: {
+    trigger: '.about-section',
+    start: 'top top',
+    end: 'bottom center',
+    scrub: 1,
+    markers: false
+  },
+  x: -window.innerWidth, // Move left (negative value)
+  y: window.innerHeight, // Move down, // Counter-clockwise rotation
+  ease: 'none',
+  duration: 3
 });
 
-gsap.set(['.floating-logos-m', '.floating-logos-i', '.floating-logos-x'], {
-    clearProps: 'all'  // Clear any existing properties
-});
-
-gsap.to('.floating-logos-m', {
-    scrollTrigger: {
-        trigger: '.main-banner',
-        start: 'top top',
-        end: 'bottom center',
-        scrub: 1.5,
-        markers: false,
-        toggleActions: "restart pause reverse pause"  // Added restart behavior
-    },
-    x: '-100vw',
-    rotation: 360,
-    ease: 'power1.inOut',
-    duration: 3
-});
-
-gsap.to('.floating-logos-i', {
-    scrollTrigger: {
-        trigger: '.main-banner',
-        start: 'top top',
-        end: 'bottom center',
-        scrub: 1,
-        markers: false,
-        toggleActions: "restart pause reverse pause"  // Added restart behavior
-    },
-    y: '',
-    rotation: 360,
-    ease: 'power1.inOut',
-    duration: 3
-});
-
-gsap.to('.floating-logos-x', {
-    scrollTrigger: {
-        trigger: '.main-banner',
-        start: 'top top',
-        end: 'bottom center',
-        scrub: .5,
-        markers: false,
-        toggleActions: "restart pause reverse pause"  // Added restart behavior
-    },
-    x: '100vw',
-    rotation: 360,
-    ease: 'power1.inOut',
-    duration: 3
-});
 
 // event 
 gsap.from(".event-head-title", {
@@ -504,6 +423,135 @@ gsap.from(".what-we-do-section .mix-btn-out", {
       toggleActions: "play reverse play reverse",
   }
 });
+
+// projects 
+gsap.from(".left-portfolio-head", {
+  duration: 1,
+  x: -100,
+  opacity: 0,
+  stagger: 0.3,
+  scrollTrigger: {
+      trigger: ".left-portfolio-head",
+      start: "top 90%",
+      end: "bottom 50%",
+      scrub: true,
+      markers: false,
+      toggleActions: "play reverse play reverse",
+  }
+});
+gsap.from(".portfolio-head .mix-btn-out", {
+  duration: 1,
+  x: 100,
+  opacity: 0,
+  stagger: 0.3,
+  scrollTrigger: {
+      trigger: ".portfolio-head .mix-btn-out",
+      start: "top 90%",
+      end: "bottom 50%",
+      scrub: true,
+      markers: false,
+      toggleActions: "play reverse play reverse",
+  }
+});
+
+gsap.to('.floating-element-2', {
+  scrollTrigger: {
+    trigger: '.what-we-do-section',
+    start: 'top top',   // animation starts when section enters the viewport
+    end: 'bottom top',     // animation ends when section scrolls out
+    scrub: true,
+    markers: false
+  },
+  x: window.innerWidth + 300,    // move right
+  y: window.innerHeight + 200,   // move down
+  ease: 'none'
+});
+
+
+gsap.set(['.floating-logos-m', '.floating-logos-i', '.floating-logos-x'], {
+    clearProps: 'all'  // Clear any existing properties
+});
+
+
+// floating text
+document.addEventListener('DOMContentLoaded', function () {
+  const floatingLogo = document.querySelector('.floating-logo');
+  const bounds = floatingLogo.getBoundingClientRect();
+
+  floatingLogo.addEventListener('mousemove', (e) => {
+    const offsetX = e.clientX - bounds.left - bounds.width / 2;
+    const offsetY = e.clientY - bounds.top - bounds.height / 2;
+
+    const deltaX = offsetX / 10; // smaller divisor = more movement
+    const deltaY = offsetY / 10;
+
+    gsap.to(floatingLogo, {
+      x: deltaX,
+      y: deltaY,
+      scale: 1.1,
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+});
+
+    floatingLogo.addEventListener('mouseleave', () => {
+      gsap.to(floatingLogo, {
+        x: 0,
+        y: 0,
+        scale: 1,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
+    });
+  });
+
+
+
+
+
+
+// what we do
+
+document.addEventListener('DOMContentLoaded', function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".what-we-do-section",
+      start: "top top",
+      end: "+=800", // increase/decrease based on scroll length
+      scrub: true,
+      pin: true,
+      markers: false // set true for debugging
+    }
+  });
+
+  // Step 1: Reveal Middle
+  tl.from(".event-column-middle", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  // Step 2: Reveal Right
+  tl.from(".event-column-left", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  // Step 3: Reveal Left
+  tl.from(".event-column-right", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    ease: "power2.out"
+  });
+});
+
+
 
 
 
