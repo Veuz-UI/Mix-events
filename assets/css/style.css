@@ -382,6 +382,14 @@ body.loading {
 	z-index: 1;
 }
 
+.abt-astr2 {
+	position: absolute;
+	top: 30%;
+  	right: -150px;
+	width: 250px;
+	z-index: 3;
+}
+
 .about-section {
 	position: relative;
 	/* height: 80vh;	 */
@@ -482,12 +490,13 @@ body.loading {
 
 /* video section */
 .zr-hu-video-out {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  margin-bottom: 120px;
+	/* height: 100%; */
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #000;
+	margin-bottom: 50px;
 }
 
 .zr-hu-video {
@@ -500,8 +509,14 @@ body.loading {
 .zr-hu-video video {
   width: 40%; /* Initial width */
   transition: width 0.3s ease;
-  /* position: relative;
-  z-index: 9; */
+  position: relative;
+  z-index: 9;
+}
+
+@media screen and (max-width: 1500px) {
+	.zr-hu-video-out {
+		height: 80vh;
+	}
 }
 
 
@@ -547,11 +562,9 @@ body.loading {
 	gap: 30px;
 	align-items: self-end;
 	position: relative;
-	/* padding-top: 30px;
-	padding-bottom: 100px; */
+	/* padding-top: 30px;*/
 	overflow: hidden;
-	/* min-height: 100vh; */
-	
+	z-index: 4;
 }
 
 
@@ -668,6 +681,7 @@ body.loading {
 	align-items: center;
 	padding: 15px 0 30px;
 	position: relative;
+	z-index: 2;
 }
 
 .right-portfolio-head button {

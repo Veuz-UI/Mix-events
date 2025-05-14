@@ -115,7 +115,26 @@ gsap.to(".abt-astr img", {
 });
 
 
+// astraunet 2
+gsap.registerPlugin(ScrollTrigger);
 
+gsap.to(".abt-astr2 img", {
+  x: -200,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".abt-astr2",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  }
+});
+gsap.to(".abt-astr2 img", {
+  y: -20,
+  duration: 2,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut"
+});
 
 
 // gradient text
@@ -511,7 +530,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // what we do
-
 document.addEventListener('DOMContentLoaded', function () {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -529,8 +547,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Step 1: Reveal Middle
   tl.from(".event-column-middle", {
     opacity: 0,
-    y: 100,
-    duration: 1,
+    y: 250,
+    duration: 5,
     ease: "power2.out"
   });
 
@@ -538,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function () {
   tl.from(".event-column-left", {
     opacity: 0,
     y: 100,
-    duration: 1,
+    duration: 3,
     ease: "power2.out"
   });
 
@@ -546,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function () {
   tl.from(".event-column-right", {
     opacity: 0,
     y: 100,
-    duration: 1,
+    duration: 3,
     ease: "power2.out"
   });
 });
